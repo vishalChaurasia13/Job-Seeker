@@ -20,7 +20,7 @@ from . import companiesRegistration
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-# Companies
+# Corporate
 
     path('companiesregistration/', companiesRegistration.companiesRegistrationInterface),
     path('companiesregistrationsubmit', companiesRegistration.companiesRegistrationSubmit),

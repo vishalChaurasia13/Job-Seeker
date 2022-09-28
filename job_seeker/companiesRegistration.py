@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from . import pool
 
+
+# corporate....................................
+
 def companiesRegistrationInterface(request):
     return render(request,"companiesRegistration.html",{'msg':''})
 

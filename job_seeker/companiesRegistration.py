@@ -29,3 +29,6 @@ def companiesRegistrationSubmit(request):
      print(e)
      return render(request, "companiesRegistration.html", {'msg': 'Fail to Submit Record'})
 
+def CompanyLogin(request):
+  return render(request, "companyLoginPage.html", {'msg': ''})
+

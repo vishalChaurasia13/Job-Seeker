@@ -26,5 +26,6 @@ urlpatterns = [
     path('companiesregistrationsubmit', companiesRegistration.companiesRegistrationSubmit),
 
     path('companylogin/', companiesRegistration.CompanyLogin),
-
+    path('companyemailLogin/', companiesRegistration.CompanyEmailLogin),
+    path('checkcompanyemailpassword', companiesRegistration.CheckCompanyEmailPassword),
 ]

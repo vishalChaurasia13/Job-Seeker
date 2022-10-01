@@ -32,3 +32,22 @@ def companiesRegistrationSubmit(request):
 def CompanyLogin(request):
   return render(request, "companyLoginPage.html", {'msg': ''})
 
+def CompanyEmailLogin(request):
+  return render(request,"companyemailLogin.html")
+
+def CheckCompanyEmailPassword(request):
+ try:
+  db, cmd = pool.ConnectionPooling()
+  email = request.POST['email']
+  password = request.POST['password']
+
+  q = "Select * from companies where email='{0}' and password='{1}'".format(email, password)
+  cmd.execute(q)
+  data = cmd.fetchone()
+  if (data):
+    return render(request,"companyProfile.html",{'msg':email,'data':'data'})
+  else:
+    return render(request, "companyLoginPage.html", {'msg': 'Invalid EmailId/Password'})
+ except Exception as e:
+   print(e)
+   return render(request, 'companyLoginPage.html', {'msg': 'Server Error'})

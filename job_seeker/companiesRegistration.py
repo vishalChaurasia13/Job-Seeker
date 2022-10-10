@@ -1,12 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect,HttpResponse
 from . import pool
 
+from django.views.decorators.clickjacking import xframe_options_exempt
 
 # corporate....................................
 
+@xframe_options_exempt
 def companiesRegistrationInterface(request):
     return render(request,"companiesRegistration.html",{'msg':''})
 
+@xframe_options_exempt
 def companiesRegistrationSubmit(request):
    try:
      db,cmd=pool.ConnectionPooling()
@@ -45,9 +48,24 @@ def CheckCompanyEmailPassword(request):
   cmd.execute(q)
   data = cmd.fetchone()
   if (data):
-    return render(request,"companyProfile.html",{'msg':email,'data':'data'})
+    request.session['company']=data
+    return render(request,"companyProfile.html",{'msg':email,'data':data})
   else:
     return render(request, "companyLoginPage.html", {'msg': 'Invalid EmailId/Password'})
  except Exception as e:
    print(e)
    return render(request, 'companyLoginPage.html', {'msg': 'Server Error'})
+
+def CompanyLogout(request):
+    del request.session['company']
+    return redirect('/companylogin')
+
+@xframe_options_exempt
+def JobPost(request):
+    return render(request,"jobpost.html",{'msg':'post a job/internship'})
+
+@xframe_options_exempt
+def CompanySearch(request):
+
+    return render(request,'companysearch.html')
+    return HttpResponse('this is search')

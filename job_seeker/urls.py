@@ -28,4 +28,8 @@ urlpatterns = [
     path('companylogin/', companiesRegistration.CompanyLogin),
     path('companyemailLogin/', companiesRegistration.CompanyEmailLogin),
     path('checkcompanyemailpassword', companiesRegistration.CheckCompanyEmailPassword),
+    path('companylogout', companiesRegistration.CompanyLogout),
+    path('jobpost/', companiesRegistration.JobPost),
+    path('companysearch/', companiesRegistration.CompanySearch),
+
 ]

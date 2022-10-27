@@ -1,14 +1,227 @@
 <!DOCTYPE html>
+<style type="text/css">
+    .root{
+        width:100%;
+        height:auto;
+        background:#f5f6fa;
+        justify-content: center;
+        display:flex;
+        align-items: center
+   }
+    .subdiv{
 
+        width:700px;
+        height: auto;
+        background: #7f8fa6;
+        padding: 15px;
+        border-radius: 10px;
+
+    }
+    .head{
+        font-size: 32px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        color:#FFF;
+        display: flex;
+        align-items: center;
+        padding: 5px;
+
+   }
+
+</style>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>job post</title>
+    <title>Job post</title>
+<!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css"
+  rel="stylesheet"
+/>
+
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 </head>
 <body>
-hello
-{{ msg }}
+<form action="/jobpostsubmit" method="post" enctype="multipart/form-data"> {% csrf_token %}
+ <div class="root">
+    <div class="subdiv">
+        <div class="head">
+            <span ><img src="/static/logo1.png" width="60" ></span>
+            <span style="padding-left: 10px">Post a Job</span>
+        </div>
+        <div class="row" style="margin-top: 10px">
+            <div class="col-12">
+                <div class="form-outline form-white" >
+                     <input  required type="text" name="title" id="spll" class="form-control form-control-lg" />
+                     <label class="form-label" for="spll">Job Title</label>
+                </div>
+            </div>
+       </div>
+        <div class="row" style="margin-top: 10px">
+            <div class="col-12">
+                <div class="form-outline form-white" >
+                     <input required type="text" name="cname" id="splll" class="form-control form-control-lg" />
+                     <label class="form-label" for="splll">Company's Name</label>
+                </div>
+            </div>
+       </div>
+        <div class="row" style="margin-top:10px;">
+            <div class="col-12">
+                <div class="form-outline form-white">
+                    <input required type="number" id="mobnum" name="contact" class="form-control form-control-lg" />
+                    <label class="form-label" for="mobnum">Contact Number</label>
+                </div>
 
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:10px;">
+            <div class="col-12">
+                <div class="form-outline form-white">
+                    <input required type="text" id="email" name="email" class="form-control form-control-lg" />
+                    <label class="form-label" for="email">Email Address</label>
+                </div>
+
+            </div>
+        </div>
+         <div class="row" style="margin-top:10px;">
+            <div class="col-12">
+                <div class="form-outline form-white">
+                    <input required type="text" name="location" id="add" class="form-control" />
+                    <label class="form-label" for="add">Location</label>
+                </div>
+            </div>
+       </div>
+        <div class="row" style="margin-top:10px;">
+            <div class="col-12">
+                <div class="form-outline form-white datepicker">
+                  <input required type="date" class="form-control" name="lastdate" id="date">
+                  <label for="date" class="form-label">Last Date</label>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top:10px;">
+           <div class="col-12">
+               <div class="form-outline form-white">
+                <div style="color: #ffff">Job Type</div>
+                <div class="btn-group">
+                    <input type="radio" value="Technical" class="btn-check" name="type" id="ctype" autocomplete="off" checked/>
+                    <label class="btn btn-white" for="ctype">Technical</label>
+
+                    <input type="radio" value="Non-Technical" class="btn-check" name="type" id="ctype1" autocomplete="off" />
+                    <label class="btn btn-white" for="ctype1">Non-Technical</label>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px">
+            <div class="col-12">
+                <div class="form-outline form-white" >
+                     <input required type="text" name="category" id="spl" class="form-control form-control-lg" />
+                     <label class="form-label" for="spl">Job Category</label>
+                </div>
+            </div>
+       </div>
+       <div class="row" style="margin-top:10px;">
+           <div class="col-12">
+               <div class="form-outline form-white">
+                <div style="color: #ffff">Job Duration</div>
+                <div class="btn-group">
+                    <input type="radio" value="Full-Time" class="btn-check" name="duration" id="dur" autocomplete="off" checked/>
+                    <label class="btn btn-white" for="dur">Full-Time</label>
+
+                    <input type="radio" value="Part-Time" class="btn-check" name="duration" id="dur1" autocomplete="off" />
+                    <label class="btn btn-white" for="dur1">Part-Time</label>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 10px">
+            <div class="col-12">
+                <div class="form-outline form-white" >
+                     <input required type="text" name="qualification" id="qualification" class="form-control form-control-lg" />
+                     <label class="form-label" for="qualification">Qualification</label>
+                </div>
+            </div>
+       </div>
+        <div class="row" style="margin-top: 10px">
+            <div class="col-12">
+                <div class="form-outline form-white" >
+                     <input required type="text" name="skills" id="skills" class="form-control form-control-lg" />
+                     <label class="form-label" for="skills">Skills Required</label>
+                </div>
+            </div>
+       </div>
+        <div class="row" style="margin-top: 10px">
+            <div class="col-12">
+                <div class="form-outline form-white" >
+                     <input required type="text" name="experience" id="exp" class="form-control form-control-lg" />
+                     <label class="form-label" for="exp">Work Experience</label>
+                </div>
+            </div>
+       </div>
+       <div class="row" style="margin-top: 10px">
+            <div class="col-12">
+                <div class="form-outline form-white" >
+                     <input required type="text" name="salary" id="salary" class="form-control form-control-lg" />
+                     <label class="form-label" for="salary">Salary</label>
+                </div>
+            </div>
+       </div>
+        <div class="row" style="margin-top: 1px">
+            <div class="col-12">
+                <div class="form-group shadow-textarea">
+                   <label for="text"></label>
+                   <textarea class="form-control z-depth-1" name="description" id="text" rows="3" placeholder="Job Description..."></textarea>
+            </div>
+            </div>
+        </div>
+         <div class="row" style="margin-top: 10px">
+            <div class="col-12">
+           <input  name="icon" class="form-control form-white form-control-lg" id="icon" type="file" />
+
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px">
+            <div class="col-6">
+             <button type="Submit" style="width:100%" class="btn btn-light btn-lg" data-mdb-ripple-color="dark">Post</button>
+
+            </div>
+
+             <div class="col-6">
+             <button type="Reset"  style="width:100%" class="btn btn-light btn-lg" data-mdb-ripple-color="dark">Reset</button>
+
+            </div>
+                    </div>
+<div class="row" style="margin-top: 4px">
+            <div style="color: #FFF;font-size: 24px" class="col-12">
+             {{ msg }}
+            </div>
+</div>
+
+    </div>
+ </div>
+
+
+</form>
 </body>
+<!-- MDB -->
+
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"
+></script>
 </html>

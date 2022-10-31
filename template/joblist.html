@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<style type="text/css" xmlns="http://www.w3.org/1999/html">
+    .maincontainer {
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        align-items: center;
+        background: #f5f6fa;
+
+    }
+
+    .root {
+        width: 1400px;
+        background: #7f8fa6;
+        padding: 10px;
+        margin: 50px;
+
+    }
+
+    .heading {
+        color: white;
+        font-size: 32px;
+        align-items: center;
+        font-weight: normal;
+        display: flex;
+        padding: 5px;
+    }
+
+    .rowgap {
+        margin-top: 40px;
+    }
+
+    .tbtexthead {
+        color: white;
+        font-weight: normal;
+        font-size: 18px;
+    }
+    .tbtext {
+        color: #FFFFFF;
+        font-size: 16px;
+        font-weight: normal;
+        align-items: center;
+    }
+
+</style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of jobs</title>
+
+    <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"
+    />
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+
+    <script type="text/javascript"
+            src="https://code.jquery.com/jquery-2.1.1.min.js">
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+<div class="maincontainer">
+    <div class="root">
+        <div class="heading">
+            List Of Jobs
+        </div>
+        <table class="table align-middle">
+            <thead class="tbtexthead">
+            <tr>
+                <th scope="col">I'D</th>
+                <th scope="col">Title</th>
+                <th scope="col">Category</th>
+                <th scope="col">Company</th>
+                <th scope="col">Email</th>
+                <th scope="col">Contact</th>
+                <th scope="col">Location</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Work Exp.</th>
+                <th scope="col">Salary</th>
+                <th scope="col">Last Date</th>
+
+            </tr>
+            </thead>
+            <tbody class="tbtext">
+            {% for row in result %}
+                <tr>
+                    <td scope="row">{{ row.job_id }}</td>
+                    <td>{{ row.jobtitle }}</td>
+                    <td>{{ row.jobcategory }}</td>
+                    <td>{{ row.cname }}</td>
+                    <td>{{ row.email }}</td>
+                    <td>{{ row.contact }}</td>
+                    <td>{{ row.location }}</td>
+                    <td>{{ row.jobduration }}</td>
+                    <td>{{ row.workexperience }}</td>
+                    <td>{{ row.salary }}</td>
+                    <td>{{ row.lastdate }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -100,8 +100,21 @@ def JobPostSubmit(request):
         print(e)
         return render(request, "jobpost.html", {'msg': 'Fail to Submit Record'})
 
+@xframe_options_exempt
+def Joblist(request):
+    try:
+        db, cmd = pool.ConnectionPooling()
+        q = "Select * From jobpost"
+        cmd.execute(q)
+        records = cmd.fetchall()
+        db.close()
+        return render(request, "joblist.html", {'result': records})
+    except Exception as e:
+        print(e)
+        return render(request, "joblist.html", {'result': {}})
 
 @xframe_options_exempt
 def CompanySearch(request):
+
     return render(request,'companysearch.html')
     return HttpResponse('this is search')

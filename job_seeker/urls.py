@@ -20,7 +20,7 @@ from . import companiesRegistration
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-# Corporate
+# Corporate(company)
 
     path('companiesregistration/', companiesRegistration.companiesRegistrationInterface),
     path('companiesregistrationsubmit', companiesRegistration.companiesRegistrationSubmit),
@@ -29,12 +29,14 @@ urlpatterns = [
     path('companyemailLogin/', companiesRegistration.CompanyEmailLogin),
     path('checkcompanyemailpassword', companiesRegistration.CheckCompanyEmailPassword),
     path('companylogout', companiesRegistration.CompanyLogout),
-
     #job post
     path('jobpost/', companiesRegistration.JobPost),
     path('jobpostsubmit', companiesRegistration.JobPostSubmit),
-
+    path('joblist/', companiesRegistration.Joblist),
     #company search
     path('companysearch/', companiesRegistration.CompanySearch),
+
+# User(Employee)
+
 
 ]

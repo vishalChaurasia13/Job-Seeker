@@ -28,3 +28,31 @@ def userRegistrationSubmit(request):
    except Exception as e:
      print(e)
      return render(request, "userRegistration.html", {'msg': 'Fail to Submit Record'})
+
+def userLogin(request):
+  return render(request, "userLoginPage.html", {'msg': ''})
+
+def userEmailLogin(request):
+  return render(request,"useremailLogin.html")
+
+def CheckuserEmailPassword(request):
+ try:
+  db, cmd = pool.ConnectionPooling()
+  email = request.POST['email']
+  password = request.POST['password']
+
+  q = "Select * from user where email='{0}' and password='{1}'".format(email, password)
+  cmd.execute(q)
+  data = cmd.fetchone()
+  if (data):
+    request.session['company']=data
+    return render(request,"userProfile.html",{'msg':email,'data':data})
+  else:
+    return render(request, "userLoginPage.html", {'msg': 'Invalid EmailId/Password'})
+ except Exception as e:
+   print(e)
+   return render(request, 'userLoginPage.html', {'msg': 'Server Error'})
+
+def userLogout(request):
+    del request.session['company']
+    return redirect('/userlogin')

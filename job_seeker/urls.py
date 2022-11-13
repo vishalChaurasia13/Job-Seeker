@@ -41,4 +41,8 @@ urlpatterns = [
     path('userregistration/', userRegistration.userRegistrationInterface),
     path('userregistrationsubmit', userRegistration.userRegistrationSubmit),
 
+    path('userlogin/', userRegistration.userLogin),
+    path('useremailLogin/', userRegistration.userEmailLogin),
+    path('checkuseremailpassword', userRegistration.CheckuserEmailPassword),
+    path('userlogout', userRegistration.userLogout),
 ]

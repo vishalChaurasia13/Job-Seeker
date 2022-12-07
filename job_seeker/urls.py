@@ -33,10 +33,13 @@ urlpatterns = [
     path('jobpost/', companiesRegistration.JobPost),
     path('jobpostsubmit', companiesRegistration.JobPostSubmit),
     path('joblist/', companiesRegistration.Joblist),
+    path('applicant/', companiesRegistration.Applicant),
+    path('applicantprofile', companiesRegistration.ApplicantProfile),
+
     #company search
     path('companysearch/', companiesRegistration.CompanySearch),
 
-# User(Employee)
+# User(With Login)
 
     path('userregistration/', userRegistration.userRegistrationInterface),
     path('userregistrationsubmit', userRegistration.userRegistrationSubmit),
@@ -45,4 +48,15 @@ urlpatterns = [
     path('useremailLogin/', userRegistration.userEmailLogin),
     path('checkuseremailpassword', userRegistration.CheckuserEmailPassword),
     path('userlogout', userRegistration.userLogout),
+    path('usersearch/', userRegistration.UserSearch),
+
+    path('profilesettings/', userRegistration.UserProfile),
+    path('updatedprofile', userRegistration.UpdatedProfile),
+    path('resume/', userRegistration.Resume),
+
+    path('applyjob/', userRegistration.ApplyJob),
+    path('appliedjob', userRegistration.AppliedJob),
+
+    # User (Without Login)
+    path('user/', userRegistration.userWithoutLogin),
 ]

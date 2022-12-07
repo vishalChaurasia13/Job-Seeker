@@ -44,33 +44,34 @@
       <!-- Navbar brand -->
       <a class="navbar-brand mt-2 mt-lg-0" href="#">
         <img
-          src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-          height="15"
+          src="/static/companylogo.png"
+          height="45"
           alt="MDB Logo"
           loading="lazy"
         />
       </a>
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li>
-            <a class="dropdown-item" target="mw" href="/specialization">Specialization</a>
-          </li>
+
+          <form action="/jobpost" method="get" enctype="multipart/form-data"> {% csrf_token %}
           <li>
-            <a class="dropdown-item" target="mw" href="/jobpost">Post</a>
+            <button type="Submit" style="width:100%" class="btn btn-light btn-lg" data-mdb-ripple-color="dark" name="companyid" value="{{ data.companyid }}">JobPost</button>
           </li>
+          </form>
           <li>
             <a class="dropdown-item"  target="mw" href="/joblist">Jobs</a>
           </li>
-            <li>
-            <a class="dropdown-item" target="mw" href="/subquestioninterface">Sub-Question</a>
+          <form action="/applicant" method="get" enctype="multipart/form-data"> {% csrf_token %}
+          <li>
+            <button type="Submit" style="width:100%" class="btn btn-light btn-lg" data-mdb-ripple-color="dark" name="companyid" value="{{ data.companyid }}">Applicant</button>
           </li>
-           <li>
+          </form>
             <a class="dropdown-item" href="/companylogout" target="_blank">Logout</a>
           </li>
 
       </ul>
        <form method="get" action="/companysearch" class="d-flex input-group w-auto">
-         <input name="companysearch" id="companysearch"
+         <input name="query" id="companysearch"
            type="search"
            class="form-control rounded"
            placeholder="Search"
@@ -101,7 +102,7 @@
           aria-expanded="false"
         >
           <img
-            src="/static/companylogo.png"
+            src="/static/optionicon.png"
             class="rounded-circle"
             height="25"
             alt="Black and White Portrait of a Man"
@@ -116,13 +117,10 @@
             <a class="dropdown-item" href="#">Home</a>
           </li>
           <li>
-            <a class="dropdown-item" href="/jobpost">Post</a>
+            <a class="dropdown-item" href="#">Post</a>
           </li>
           <li>
-            <a class="dropdown-item" href="/joblist">Jobs</a>
-          </li>
-            <li>
-            <a class="dropdown-item" href="#">Sub-Question</a>
+            <a class="dropdown-item" href="#">Jobs</a>
           </li>
            <li>
             <a class="dropdown-item" href="/companylogout" target="_blank">Logout</a>

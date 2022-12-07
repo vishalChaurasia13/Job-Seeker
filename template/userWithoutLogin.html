@@ -19,7 +19,7 @@
 />
 
 <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <title>User Dashboard</title>
+    <title>Dashboard</title>
 </head>
 <body>
 <!-- Navbar -->
@@ -42,54 +42,38 @@
     <!-- Collapsible wrapper -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Navbar brand -->
-        <form method="get" action="/profilesettings" class="d-flex input-group w-auto">
-      <a class="navbar-brand mt-2 mt-lg-0"  >
-        <img
-
-
+      <a class="navbar-brand mt-2 mt-lg-0" href="/companylogin">
+          <img
+          src="/static/companylogo.png"
+          height="45"
+          alt="MDB Logo"
+          loading="lazy"
         />
-          <button type="submit"  name="u_id"  value="{{ data.u_id }}" ><img src="/static/profileicon.png" height="30"></button>
+
       </a>
-        </form>
+      <br><br>
+      <a class="navbar-brand mt-2 mt-lg-0" href="/userlogin">
+      <img
+          src="/static/userlogin.png"
+          height="45"
+          alt="MDB Logo"
+          loading="lazy"
+        />
+      </a>
+
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <form action="/applyjob" method="get" enctype="multipart/form-data"> {% csrf_token %}
-          <a class="navbar-brand mt-2 mt-lg-0"  >
-            <button type="Submit" style="width:100%" class="btn btn-light btn-lg" data-mdb-ripple-color="dark" name="u_id" value="{{ data.u_id }}">
-                <img
-          src="/static/jobapply.png"
-          height="30"
-          alt="MDB Logo"
-          loading="lazy"
-        />
-            </button>
-          </a>
-              </form>
 
-            <form action="/resume" method="get" enctype="multipart/form-data"> {% csrf_token %}
-          <a class="navbar-brand mt-2 mt-lg-0"  >
-            <button type="Submit" style="width:100%" class="btn btn-light btn-lg" data-mdb-ripple-color="dark" name="u_id" value="{{ data.u_id }}">
-                 <img
-          src="/static/resume.png"
-          height="30"
+          <li>
+            <a class="dropdown-item"  target="mw" href="/joblist">
+              <img
+          src="/static/joblist.png"
+          height="45"
           alt="MDB Logo"
           loading="lazy"
         />
-            </button>
-          </a>
-              </form>
-           <form action="/userlogout" >
-          <a class="navbar-brand mt-2 mt-lg-0"  >
-            <button type="Submit" style="width:100%" class="btn btn-light btn-lg" data-mdb-ripple-color="dark" >
-                 <img
-          src="/static/logout.png"
-          height="30"
-          alt="MDB Logo"
-          loading="lazy"
-        />
-            </button>
-          </a>
-              </form>
+            </a>
+          </li>
 
       </ul>
        <form method="get" action="/usersearch" class="d-flex input-group w-auto">
@@ -112,7 +96,7 @@
     <!-- Right elements -->
     <div class="d-flex align-items-center">
       <!-- Icon -->
-     <span style="font-weight: bold;margin-right: 20px;">{{ data.uname }}</span>
+     <span style="font-weight: bold;margin-right: 20px;">{{'Welcome' }}</span>
       <!-- Avatar -->
       <div class="dropdown">
         <a
@@ -136,18 +120,16 @@
           aria-labelledby="navbarDropdownMenuAvatar"
         >
           <li>
-            <a class="dropdown-item" href="#">Profile</a>
+            <a class="dropdown-item" href="/useremailLogin">User Login</a>
           </li>
           <li>
-            <a class="dropdown-item" href="#">Jobs</a>
+            <a class="dropdown-item" href="/companyemailLogin">Company Login</a>
           </li>
           <li>
-            <a class="dropdown-item" href="#">Resume</a>
+            <a class="dropdown-item" href="#">Help</a>
           </li>
-           <li>
-            <a class="dropdown-item" href="/userlogout" target="_blank">Logout</a>
-          </li>
-
+          <li>
+            <a class="dropdown-item" href="/joblist">Jobs</a>
 
         </ul>
       </div>
@@ -156,6 +138,7 @@
   </div>
   <!-- Container wrapper -->
 </nav>
+<div>Welcome...</div>
 <!-- Navbar -->
 <iframe frameborder="0"  style="width: 100vw; height: 91vh;"  name="mw"></iframe>
 </body>

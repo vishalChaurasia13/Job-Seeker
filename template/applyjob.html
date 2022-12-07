@@ -49,6 +49,13 @@
     <meta charset="UTF-8">
     <title>List of jobs</title>
 
+     <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css" rel="stylesheet"/>
+
     <link
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
             rel="stylesheet"
@@ -64,9 +71,12 @@
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 </head>
 <body>
+<form action="/appliedjob" method="POST" enctype="multipart/form-data"> {% csrf_token %}
 <div class="maincontainer">
+
     <div class="root">
         <div class="heading">
             List Of Jobs
@@ -74,7 +84,7 @@
         <table class="table align-middle">
             <thead class="tbtexthead">
             <tr>
-                <th scope="col">I'D</th>
+
                 <th scope="col">Title</th>
                 <th scope="col">Category</th>
                 <th scope="col">Company</th>
@@ -88,10 +98,12 @@
 
             </tr>
             </thead>
+
             <tbody class="tbtext">
+            <td>{{ msg }}</td>
+
             {% for row in result %}
                 <tr>
-                    <td scope="row">{{ row.job_id }}</td>
                     <td>{{ row.jobtitle }}</td>
                     <td>{{ row.jobcategory }}</td>
                     <td>{{ row.cname }}</td>
@@ -102,11 +114,16 @@
                     <td>{{ row.workexperience }}</td>
                     <td>{{ row.salary }}</td>
                     <td>{{ row.lastdate }}</td>
+                    <td><input hidden type="text" name="job_id" readonly value="{{ row.job_id }}" ></td>
+                    <td><button type="Submit" style="width:100%" class="btn btn-light btn-lg" data-mdb-ripple-color="dark" name="companyid" value="{{ row.companyid }}">Apply</button></td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
     </div>
+
 </div>
+<input hidden type="text" name="u_id"  readonly value="{{ u_id }}"><br><br>
+</form>
 </body>
 </html>

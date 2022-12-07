@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
 <style type="text/css" xmlns="http://www.w3.org/1999/html">
     .maincontainer {
         display: flex;
@@ -47,7 +46,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>List of jobs</title>
+    <title>Applications</title>
+
+     <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css" rel="stylesheet"/>
 
     <link
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -64,49 +70,40 @@
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 </head>
 <body>
+<form action="/applicantprofile" method="POST" enctype="multipart/form-data"> {% csrf_token %}
 <div class="maincontainer">
     <div class="root">
         <div class="heading">
-            List Of Jobs
+            List Of Applicants
         </div>
         <table class="table align-middle">
             <thead class="tbtexthead">
             <tr>
-                <th scope="col">I'D</th>
-                <th scope="col">Title</th>
-                <th scope="col">Category</th>
-                <th scope="col">Company</th>
-                <th scope="col">Email</th>
-                <th scope="col">Contact</th>
-                <th scope="col">Location</th>
-                <th scope="col">Duration</th>
-                <th scope="col">Work Exp.</th>
-                <th scope="col">Salary</th>
-                <th scope="col">Last Date</th>
+
+                <th scope="col">Company I'd</th>
+                <th scope="col">Job I'd</th>
+                <th scope="col">User I'd</th>
 
             </tr>
             </thead>
             <tbody class="tbtext">
-            {% for row in result %}
+            {% for row in data %}
                 <tr>
-                    <td scope="row">{{ row.job_id }}</td>
-                    <td>{{ row.jobtitle }}</td>
-                    <td>{{ row.jobcategory }}</td>
-                    <td>{{ row.cname }}</td>
-                    <td>{{ row.email }}</td>
-                    <td>{{ row.contact }}</td>
-                    <td>{{ row.location }}</td>
-                    <td>{{ row.jobduration }}</td>
-                    <td>{{ row.workexperience }}</td>
-                    <td>{{ row.salary }}</td>
-                    <td>{{ row.lastdate }}</td>
+
+                    <td>{{ row.companyid }}</td>
+                    <td>{{ row.job_id }}</td>
+                    <td>{{ row.u_id }}</td>
+                    <td><button type="Submit" style="width:100%" class="btn btn-light btn-lg" data-mdb-ripple-color="dark" name="u_id" value="{{ row.u_id }}">Open</button></td>
+
                 </tr>
             {% endfor %}
             </tbody>
         </table>
     </div>
 </div>
+</form>
 </body>
 </html>
